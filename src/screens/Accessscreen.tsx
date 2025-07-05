@@ -5,9 +5,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {signIn, signUp, confirmUser} from '../Cognitoservices';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../components/types';
+import { RootDrawerParamList } from '../components/types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Access'>;
+type Props = NativeStackScreenProps<RootDrawerParamList, 'Access'>;
 
 function Accessscreen({ navigation }: Props) {
     const [user,setUser] = useState("")
