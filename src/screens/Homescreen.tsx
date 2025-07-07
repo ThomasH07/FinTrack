@@ -6,9 +6,9 @@ import { RootDrawerParamList } from '../components/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { BudgetCircle } from '../components/budgetcircle'
 
-type Props = NativeStackScreenProps<RootDrawerParamList, 'FinTrack'>;
+type Props = NativeStackScreenProps<RootDrawerParamList, 'Home'>;
 
-export default function Homescreen({navigation} : Props) {
+export default function Homescreen({navigation} :  Props) {
   const expenses = [
     { tag: 'Food', amount: 120 },
     { tag: 'Rent', amount: 600 },

@@ -7,9 +7,9 @@ const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
   return (
-    <Drawer.Navigator initialRouteName="FinTrack">
+    <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen 
-        name="FinTrack" 
+        name="Home" 
         component={Homescreen} 
     />
 
