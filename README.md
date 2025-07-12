@@ -1,8 +1,8 @@
 # 📊 FinTrack
 
-**FinTrack** is a cross-platform budgeting app designed to help users take control of their personal finances. Whether it’s tracking gas, groceries, entertainment, or any other expense, FinTrack offers a simple and effective way to monitor and manage spending habits.
+**FinTrack** is a cross-platform budgeting app designed to help users take control of their personal finances. Whether it's tracking spending on gas, groceries, entertainment, or other expenses, FinTrack offers a simple and effective way to monitor and manage financial habits.
 
-Built with **bare-bones React Native**, **AWS Cognito** for secure user authentication, and **AWS S3** for data storage, FinTrack ensures performance, scalability, and security—right out of the box.
+Built with **bare-bones React Native**, **AWS Cognito** for secure user authentication,  **AWS S3** for file storage, and **Amazon DynamoDB** for data persistence, FinTrack ensures performance, scalability, and security.
 
 ---
 
@@ -24,8 +24,8 @@ Built with **bare-bones React Native**, **AWS Cognito** for secure user authenti
 |--------------|-------------------------------------|
 | React Native | Cross-platform mobile development   |
 | AWS Cognito  | User authentication and management  |
-| AWS S3       | Handles files, cheap & scalable     |
-| AWS DynamoDB | Expenses & Analytics                |
+| AWS S3       | Scalable and cost-effective file storage     |
+| AWS DynamoDB | Persistent storage for expenses and analytics               |
 
 ---
 
