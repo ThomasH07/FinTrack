@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import "../components/test.css"
 //import { RootDrawerParamList } from '../components/types';
 //import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
@@ -8,7 +9,7 @@ import { View, Text } from 'react-native';
 export default function BudgetDetails() {
     return (
         
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View className="flex-1 items-center justify-center">
           
           <Text>Welcome to the budgeting page </Text>
         </View>

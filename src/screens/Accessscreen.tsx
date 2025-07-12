@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { TextInput, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { TextInput, Image, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {signIn, signUp, confirmUser} from '../Cognitoservices';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootDrawerParamList } from '../components/types';
-
+import "../components/test.css"
 type Props = NativeStackScreenProps<RootDrawerParamList, 'Access'>;
 
 function Accessscreen({ navigation }: Props) {
@@ -94,22 +94,22 @@ function Accessscreen({ navigation }: Props) {
     };
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView className="flex-1 items-center justify-center">
                 {/* Header */}
                     <Image 
                     source={require('../assets/TempLogo.jpg')}
-                    style={styles.logo}
+                    className="w-[120px] h-[120px] mb-[10px]"
                     />
-                <Text style = {styles.titleText}>FinTrack</Text>
+                <Text className = "text-xl font-medium">FinTrack</Text>
                 {/** signup/login button */}
                 {!signupButton && !loginButton && (
                     <>
-                    <TouchableOpacity onPress={handleLoginButton} style = {styles.accessButton}>
-                        <Text style = {styles.accessButtonText}>Login</Text>
+                    <TouchableOpacity onPress={handleLoginButton} className="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[10px] p-[10px] items-center justify-center">
+                        <Text className = "text-white text-sm">Login</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={handleSignupButton} style = {styles.accessButton}>
-                        <Text style = {styles.accessButtonText}>Signup</Text>
+                    <TouchableOpacity onPress={handleSignupButton} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                        <Text className = "text-white text-sm">Signup</Text>
                     </TouchableOpacity>
                     
                     </>
@@ -117,24 +117,26 @@ function Accessscreen({ navigation }: Props) {
                 {/** login display */}
                 {!signupButton && loginButton && (
                 <>
-                    <Text style={styles.baseText}>Enter your User:</Text>
-                        <TextInput
-                        style={styles.input}
+                    <Text style={{ fontFamily: 'Cochin' }}>Enter your User:</Text>
+                        <TextInput 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+
                         placeholder="Your User"
                         value={user}
                         onChangeText={setUser}
                     />
 
-                    <Text style={styles.baseText}>Enter your Password:</Text>
+                    <Text style={{ fontFamily: 'Cochin' }}>Enter your Password:</Text>
                         <TextInput
-                        style={styles.input}
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+
                         placeholder="Your password"
                         value={pass}
                         onChangeText={setPass}
                         secureTextEntry={true}
                     />
-                    <TouchableOpacity onPress={handleLogin} style={styles.accessButton}>
-                        <Text style={styles.accessButtonText}>Submit</Text>
+                    <TouchableOpacity onPress={handleLogin} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                        <Text className = "text-white text-sm">Submit</Text>
                     </TouchableOpacity>
                 </>
                 )}
@@ -142,45 +144,49 @@ function Accessscreen({ navigation }: Props) {
                 {/* signup */}
                 {!signupSuccessful && !loginButton && signupButton && (
                 <>
-                    <Text style={styles.baseText}>Enter your User:</Text>
+                    <Text style={{ fontFamily: 'Cochin' }}>Enter your User:</Text>
                         <TextInput
-                        style={styles.input}
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+
                         placeholder="Your User"
                         value={user}
                         onChangeText={setUser}
                     />
-                    <Text style={styles.baseText}>Enter your Email:</Text>
+                    <Text style={{ fontFamily: 'Cochin' }}>Enter your Email:</Text>
                         <TextInput
-                        style={styles.input}
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+
                         placeholder="Your Email"
                         value={email}
                         onChangeText={setEmail}
                     />
-                    <Text style={styles.baseText}>Enter your Password:</Text>
+                    <Text style={{ fontFamily: 'Cochin' }}>Enter your Password:</Text>
                         <TextInput
-                        style={styles.input}
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+
                         placeholder="Your Password"
                         value={pass}
                         onChangeText={setPass}
                         secureTextEntry={true}
                     />
-                    <TouchableOpacity onPress={handleSignup} style={styles.accessButton}>
-                        <Text style={styles.accessButtonText}>Submit</Text>
+                    <TouchableOpacity onPress={handleSignup} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                        <Text className = "text-white text-sm">Submit</Text>
                     </TouchableOpacity>
                 </>
                 )}
                 {/** Verification */}
                 {signupSuccessful &&(
                     <>
-                    <Text style={styles.baseText}>Enter your confirmation code:</Text>
+                    <Text style={{ fontFamily: 'Cochin' }}>Enter your confirmation code:</Text>
                         <TextInput
-                        style={styles.input}
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+
                         placeholder="Your code"
                         value={verification}
                         onChangeText={setVerification}
                     />
-                    <TouchableOpacity onPress={handleVerification} style={styles.accessButton}>
-                        <Text style={styles.accessButtonText}>Submit</Text>
+                    <TouchableOpacity onPress={handleVerification} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                        <Text className = "text-white text-sm">Submit</Text>
                     </TouchableOpacity>
                     </>
                 )}
@@ -189,8 +195,8 @@ function Accessscreen({ navigation }: Props) {
                 {(signupButton || loginButton || signupSuccessful) && (
 
                 <>
-                <TouchableOpacity onPress={handleAccessButton} style = {styles.accessButton}>
-                    <Text style = {styles.accessButtonText}>Back</Text>
+                <TouchableOpacity onPress={handleAccessButton} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                    <Text className = "text-white text-sm">Back</Text>
                 </TouchableOpacity>
                 
                 </>
@@ -199,50 +205,5 @@ function Accessscreen({ navigation }: Props) {
         </SafeAreaProvider>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      
-    },
-    logo: {
-        width:120,
-        height:120,
-        marginBottom: 10,
-    },
-    baseText: {
-      fontFamily: 'Cochin',
-    },
-    titleText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-    input: {
-        width: '50%',   
-        height: 30,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        paddingHorizontal: 15,
-        fontSize: 16,
-        marginBottom: 20,
-    },
-    accessButton: {
-        
-        width: '25%',   
-        height: 30,
-        borderWidth: 1,
-        borderColor: 'black',
-        backgroundColor: 'black',
-        borderRadius: 12,
-        margin:10,
-        padding:10
 
-    },
-    accessButtonText: {
-        color: 'white',
-        fontSize: 8,
-    }
-  });
 export default Accessscreen;

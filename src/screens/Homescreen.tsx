@@ -5,7 +5,7 @@ import { userPool } from '../Cognitoservices';
 import { RootDrawerParamList } from '../components/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { BudgetCircle } from '../components/budgetcircle'
-
+import "../components/test.css"
 type Props = NativeStackScreenProps<RootDrawerParamList, 'Home'>;
 
 export default function Homescreen({navigation} :  Props) {
@@ -30,7 +30,7 @@ export default function Homescreen({navigation} :  Props) {
       
       return (
         
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View className="flex-1 items-center justify-center">
           
           <BudgetCircle totalBudget={1000} expenses={expenses} />
           <Text>Welcome to Home</Text>
