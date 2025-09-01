@@ -16,6 +16,7 @@ export const BudgetCircle: React.FC<BudgetCircleProps> = ({ totalBudget, expense
     const spent = expenses.reduce((sum, expense) => sum + expense.amount, 0);
     const remaining = Math.max(totalBudget - spent, 0);
     const fill = Math.min((spent / totalBudget) * 100, 100);
+    // REDO THIS
     const getColor = (): string => {
         if (fill < 50) return '#4caf50';
         if (fill < 75) return '#ff9800';

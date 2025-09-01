@@ -33,9 +33,9 @@ export default function Homescreen({navigation} :  Props) {
         <View className="flex-1 items-center justify-center">
           
           <BudgetCircle totalBudget={1000} expenses={expenses} />
-          <Text>Welcome to Home</Text>
+          <Text className= "text-xl font-comicrelief-bol">Welcome to Home</Text>
           <Button title="Sign Out" onPress={handleSignOut} />
-        </View>
+        </View> 
       );
   }
   

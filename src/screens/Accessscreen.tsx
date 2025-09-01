@@ -59,12 +59,11 @@ function Accessscreen({ navigation }: Props) {
     {/** Logging in a account */}
     const handleLogin = async () => {
         try {
-            const session = await signIn(user, pass);
+            // const session = await signIn(user, pass);
             
-            console.log("Login successful:", session);
-        
-
-            await AsyncStorage.setItem("token", session.getAccessToken().getJwtToken());
+            // console.log("Login successful:", session);
+    
+            // await AsyncStorage.setItem("token", session.getAccessToken().getJwtToken());
             navigation.replace('FinTrack');
 
         } catch (error) {
@@ -74,9 +73,10 @@ function Accessscreen({ navigation }: Props) {
     {/** creating a account */}
     const handleSignup = async () => {
         try {
-            const session = await signUp(user, email, pass); 
-            console.log("Signup successful:", session);
-            handleSignupSuccessful();
+            // const session = await signUp(user, email, pass); 
+            console.log("Signup successful:");
+            navigation.replace('Access');
+            // handleSignupSuccessful();
         } catch (error) {
             console.error("Signup failed:", error);
 
@@ -84,9 +84,10 @@ function Accessscreen({ navigation }: Props) {
       };
     const handleVerification = async () =>{
         try {
-            const session = await confirmUser(user,verification); 
-            console.log("Verification successful:", session);
-            handleAccessButton();
+            // const session = await confirmUser(user,verification); 
+            console.log("Verification successful:");
+            // console.log("Verification successful:", session);
+            // handleAccessButton();
         } catch (error) {
             console.error("Verification failed:", error);
 
