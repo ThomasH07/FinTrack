@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { TextInput, Image, Text, TouchableOpacity } from 'react-native';
+import { TextInput, Image, Text, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -14,20 +14,22 @@ function Accessscreen({ navigation }: Props) {
     const [email,setEmail] = useState("")
     const [pass,setPass] = useState("")
 
-    const [loginButton,setLoginButton] = useState(false)
+    const [loginButton,setLoginButton] = useState(true)
     const [signupButton,setSignupButton] = useState(false)
     
     const [signupSuccessful,setSignupSuccessful] = useState(false)
     const [verification,setVerification] = useState("")
 
-    const handleLoginButton = () => {
-        if(loginButton === true){
-            setLoginButton(false)
+    // const handleLoginButton = () => {
+    //     if(loginButton === true){
+    //         setLoginButton(false)
             
-        }else{
-            setLoginButton(true)
-        }
-    };
+    //     }else{
+    //         setLoginButton(true)
+    //         setSignupButton(false)
+    //         setSignupSuccessful(false)
+    //     }
+    // };
 
     const handleSignupButton = () => {
         if(signupButton === true){
@@ -35,21 +37,26 @@ function Accessscreen({ navigation }: Props) {
         }
         else{
             setSignupButton(true)
+            setLoginButton(false)
+            setSignupSuccessful(false)
         }
     };
+
     const handleSignupSuccessful = () => {
         if(signupSuccessful === true){
             setSignupSuccessful(false)
+            
         }else{
             setSignupSuccessful(true)
+            setLoginButton(false)
+            setSignupButton(false)
         }
     }
+    // login!
     const handleAccessButton = () =>{
-        if(signupButton === true){
-            setSignupButton(false)
-        }else{
-            setLoginButton(false)
-        }
+        setSignupButton(false)
+        setLoginButton(true)
+    
         setSignupSuccessful(false)
         setEmail('')
         setPass('')
@@ -75,8 +82,7 @@ function Accessscreen({ navigation }: Props) {
         try {
             // const session = await signUp(user, email, pass); 
             console.log("Signup successful:");
-            navigation.replace('Access');
-            // handleSignupSuccessful();
+            handleSignupSuccessful();
         } catch (error) {
             console.error("Signup failed:", error);
 
@@ -87,7 +93,7 @@ function Accessscreen({ navigation }: Props) {
             // const session = await confirmUser(user,verification); 
             console.log("Verification successful:");
             // console.log("Verification successful:", session);
-            // handleAccessButton();
+            handleAccessButton();
         } catch (error) {
             console.error("Verification failed:", error);
 
@@ -96,31 +102,24 @@ function Accessscreen({ navigation }: Props) {
     return (
         <SafeAreaProvider>
             <SafeAreaView className="flex-1 items-center justify-center">
-                {/* Header */}
-                    <Image 
-                    source={require('../assets/TempLogo.jpg')}
-                    className="w-[120px] h-[120px] mb-[10px]"
-                    />
-                <Text className = "text-xl font-medium">FinTrack</Text>
-                {/** signup/login button */}
-                {!signupButton && !loginButton && (
-                    <>
-                    <TouchableOpacity onPress={handleLoginButton} className="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[10px] p-[10px] items-center justify-center">
-                        <Text className = "text-white text-sm">Login</Text>
-                    </TouchableOpacity>
+                <View className = "bg-white w-5/6 h-4/6 justify-center items-center rounded-2xl shadow-xl shadow-gray-500">
 
-                    <TouchableOpacity onPress={handleSignupButton} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
-                        <Text className = "text-white text-sm">Signup</Text>
-                    </TouchableOpacity>
+                
+                    {/* Header */}
+                    <KeyboardAvoidingView className="flex-1 w-full items-center mt-[40px]">
+                        <Image 
+                        source={require('../assets/TempLogo.jpg')}
+                        className="w-[100px] h-[100px] mb-[10px]"
+                        />
+                        <Text className = "text-xl font-medium">FinTrack(PROTOTYPE)</Text>
                     
-                    </>
-                )}
+
                 {/** login display */}
                 {!signupButton && loginButton && (
                 <>
                     <Text style={{ fontFamily: 'Cochin' }}>Enter your User:</Text>
                         <TextInput 
-                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[15px]" 
 
                         placeholder="Your User"
                         value={user}
@@ -129,25 +128,27 @@ function Accessscreen({ navigation }: Props) {
 
                     <Text style={{ fontFamily: 'Cochin' }}>Enter your Password:</Text>
                         <TextInput
-                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[15px]" 
 
                         placeholder="Your password"
                         value={pass}
                         onChangeText={setPass}
                         secureTextEntry={true}
                     />
-                    <TouchableOpacity onPress={handleLogin} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                    <TouchableOpacity onPress={handleLogin} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[10px] items-center justify-center">
                         <Text className = "text-white text-sm">Submit</Text>
                     </TouchableOpacity>
+                    
+    
                 </>
                 )}
 
                 {/* signup */}
-                {!signupSuccessful && !loginButton && signupButton && (
+                {signupButton && !loginButton &&(
                 <>
                     <Text style={{ fontFamily: 'Cochin' }}>Enter your User:</Text>
                         <TextInput
-                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[15px]" 
 
                         placeholder="Your User"
                         value={user}
@@ -155,7 +156,7 @@ function Accessscreen({ navigation }: Props) {
                     />
                     <Text style={{ fontFamily: 'Cochin' }}>Enter your Email:</Text>
                         <TextInput
-                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[15px]" 
 
                         placeholder="Your Email"
                         value={email}
@@ -163,48 +164,59 @@ function Accessscreen({ navigation }: Props) {
                     />
                     <Text style={{ fontFamily: 'Cochin' }}>Enter your Password:</Text>
                         <TextInput
-                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[15px]" 
 
                         placeholder="Your Password"
                         value={pass}
                         onChangeText={setPass}
                         secureTextEntry={true}
                     />
-                    <TouchableOpacity onPress={handleSignup} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                    <TouchableOpacity onPress={handleSignup} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[1px] p-1px] items-center justify-center">
                         <Text className = "text-white text-sm">Submit</Text>
                     </TouchableOpacity>
                 </>
                 )}
                 {/** Verification */}
-                {signupSuccessful &&(
+                {signupSuccessful &&  (
                     <>
                     <Text style={{ fontFamily: 'Cochin' }}>Enter your confirmation code:</Text>
                         <TextInput
-                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[20px]" 
+                        className="w-1/2 h-[30px] border border-[#ccc] rounded-[8px] px-[15px] text-[16px] mb-[10px]" 
 
                         placeholder="Your code"
                         value={verification}
                         onChangeText={setVerification}
                     />
-                    <TouchableOpacity onPress={handleVerification} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
+                    <TouchableOpacity onPress={handleVerification} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[1px] p-[5px] items-center justify-center">
                         <Text className = "text-white text-sm">Submit</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text className = "mt-1mb-4"> Didn't receive code?</Text>
+                    </TouchableOpacity>
+                    
                     </>
                 )}
 
-                {/** back button */}
-                {(signupButton || loginButton || signupSuccessful) && (
-
+                {/** Extra buttons */}
+                {!signupButton &&  (
                 <>
-                <TouchableOpacity onPress={handleAccessButton} className ="w-1/5 h-[39px] border border-black bg-black rounded-[12px] m-[5px] p-[5px] items-center justify-center">
-                    <Text className = "text-white text-sm">Back</Text>
+                <TouchableOpacity onPress={handleSignupButton} className ="w-5/5 h-[39px] rounded-[12px] m-[1px] p-[1px] items-center justify-center">
+                    <Text className = "text-black text-sm">Dont have an account?</Text>
+                    <Text className = "text-blue-500 text-sm"> Sign up</Text>
                 </TouchableOpacity>
-                
                 </>
                 )}
+                {signupButton && (
+                <>
+                <TouchableOpacity onPress={handleAccessButton} className ="w-5/5 h-[39px] m-[1px] p-[1px] items-center justify-center">
+                    <Text className = "text-black text-sm">Back</Text>
+                </TouchableOpacity>
+                </>
+                )}
+                </KeyboardAvoidingView>
+                </View>
             </SafeAreaView>
         </SafeAreaProvider>
     );
 }
-
 export default Accessscreen;

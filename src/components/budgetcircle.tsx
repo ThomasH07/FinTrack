@@ -36,7 +36,7 @@ export const BudgetCircle: React.FC<BudgetCircleProps> = ({ totalBudget, expense
                 backgroundColor="#e0e0e0"
                 duration={1000}
                 lineCap="round"
-            >
+            > 
                 {() => (
                 <View style={styles.innerText}>
                     <Text style={styles.amountLeft}>${remaining.toFixed(2)}</Text>

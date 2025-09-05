@@ -11,7 +11,7 @@ export default function BudgetDetails() {
         
         <View className="flex-1 items-center justify-center">
           
-          <Text>Welcome to the budgeting page </Text>
+          <Text>Welcome to the budgeting page (PROTOTYPE)</Text>
         </View>
       );
 

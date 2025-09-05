@@ -4,6 +4,8 @@
 
 Built with **bare-bones React Native**, **AWS Cognito** for secure user authentication,  **AWS S3** for file storage, and **Amazon DynamoDB** for data persistence, FinTrack ensures performance, scalability, and security.
 
+[Figma Product and Design](https://www.figma.com/board/T1Ds07NWXgdRMYzGjLfWqb/Fintrack-Product-and-Design?node-id=0-1&t=rygw3sXkAJEGcEXQ-1)
+
 ---
 
 ## 🚀 Features
