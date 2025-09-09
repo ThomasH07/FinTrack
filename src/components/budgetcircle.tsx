@@ -23,7 +23,7 @@ export const BudgetCircle: React.FC<BudgetCircleProps> = ({ totalBudget, expense
         return '#f44336';
     };
     const handlePress = () => {
-        navigation.navigate('BudgetDetails'); 
+        navigation.navigate('Budget'); 
     };
     return (
         <Pressable onPress={handlePress}>

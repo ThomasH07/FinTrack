@@ -1,8 +1,11 @@
 export type RootDrawerParamList = {
-    Home: undefined;
+    Dashboard: undefined;
     Access: undefined;
     FinTrack: undefined;
-    BudgetDetails: undefined;
+    Budget: undefined;
+    Transactions: undefined;
+    Settings: undefined;
+    ' ': undefined;
     
     
     // not pages 
