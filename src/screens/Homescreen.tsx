@@ -32,7 +32,7 @@ export default function Homescreen({navigation} :  Props) {
       return (
         <View className="bg-gradient-to-br from-blue-50 items-center justify-center">
           {/* Month Navigation */}
-          <View className="w-full flex justify-between items-center px-6 mt-4 flex-row">
+          <View className="w-full flex justify-between items-center px-6 mt-1 flex-row">
           <Text className="text-2xl text-gray-800 rounded-full p-2 hover:bg-gray-200 cursor-pointer">&lt;</Text>
           <View className="flex flex-col items-center">
             <Text className="text-lg font-bold text-gray-700">Month</Text>
@@ -40,11 +40,22 @@ export default function Homescreen({navigation} :  Props) {
           </View>
           <Text className="text-2xl text-gray-800 rounded-full p-2 hover:bg-gray-200 cursor-pointer">&gt;</Text>
         </View>
-          {/* Section */}
-        <View className="w-11/12 h-64 my-6 rounded-3xl bg-white shadow-lg flex items-center justify-center">
+          {/* budget circleSection */}
+        <View className="w-11/12 h-64 my-2 rounded-3xl bg-white shadow-lg flex items-center justify-center border">
         <BudgetCircle totalBudget = {1000} expenses={expenses}/>
         </View>
-        {/* Section */}
+        {/* Section */}xw
+        <View className="w-11/12 h-1/4 flex flex-row justify-center ">
+          <View className="w-5/12 my-[6] rounded-3xl bg-white shadow-lg flex items-center justify-center m-[17] border">
+          <Text>test</Text>
+          </View>
+          <View className="w-5/12 my-[6] rounded-3xl bg-white shadow-lg flex items-center justify-center m-[17] border">
+          <Text>test</Text>
+          </View>
+        </View>
+        <View className="w-11/12 h-1/4 my-2 rounded-3xl bg-white shadow-lg flex items-center justify-center border">
+          <Text>test</Text>
+        </View>
         {/* Section */}
         {/* Section */}
         </View>
