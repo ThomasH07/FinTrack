@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button, View, Text } from 'react-native';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { userPool } from '../Cognitoservices'; 
@@ -9,6 +9,7 @@ import "../components/test.css"
 type Props = NativeStackScreenProps<RootDrawerParamList, 'Home'>;
 
 export default function Homescreen({navigation} :  Props) {
+  const [monthYear, setMonthYear] = useState('August 2025');
   const expenses = [
     { tag: 'Food', amount: 120 },
     { tag: 'Rent', amount: 600 },
@@ -29,17 +30,24 @@ export default function Homescreen({navigation} :  Props) {
       };
       
       return (
-        
-        <View className="flex-1 items-center justify-center">
-          
-          {/* <BudgetCircle totalBudget={1000} expenses={expenses} />
-          <Text className= "text-xl font-comicrelief-bol">Welcome to Home (PROTOTYPE)</Text>
-          <Button title="Sign Out" onPress={handleSignOut} /> */}
-          <View className = "flex-1 w-1/2 h-1/3 items-center justify-center flex-1 ">
-            <Text></Text>
-          
+        <View className="bg-gradient-to-br from-blue-50 items-center justify-center">
+          {/* Month Navigation */}
+          <View className="w-full flex justify-between items-center px-6 mt-4 flex-row">
+          <Text className="text-2xl text-gray-800 rounded-full p-2 hover:bg-gray-200 cursor-pointer">&lt;</Text>
+          <View className="flex flex-col items-center">
+            <Text className="text-lg font-bold text-gray-700">Month</Text>
+            <Text className="text-sm text-gray-500">{monthYear}</Text>
           </View>
-        </View> 
+          <Text className="text-2xl text-gray-800 rounded-full p-2 hover:bg-gray-200 cursor-pointer">&gt;</Text>
+        </View>
+          {/* Section */}
+        <View className="w-11/12 h-64 my-6 rounded-3xl bg-white shadow-lg flex items-center justify-center">
+        <BudgetCircle totalBudget = {1000} expenses={expenses}/>
+        </View>
+        {/* Section */}
+        {/* Section */}
+        {/* Section */}
+        </View>
       );
   }
   
