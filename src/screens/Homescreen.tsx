@@ -6,6 +6,7 @@ import { RootDrawerParamList } from '../components/types';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { BudgetCircle } from '../components/budgetcircle'
 import "../components/test.css"
+
 type Props = NativeStackScreenProps<RootDrawerParamList, 'Dashboard'>;
 
 export default function Homescreen({navigation} :  Props) {
@@ -45,7 +46,7 @@ export default function Homescreen({navigation} :  Props) {
           <View className="w-11/12 h-64 my-2 rounded-3xl bg-white shadow-lg flex items-center justify-center border">
           <BudgetCircle totalBudget = {1000} expenses={expenses}/>
           </View>
-          {/* Section */}xw
+          {/* Section */}
           <View className="w-11/12 h-1/4 flex flex-row justify-center rounded-3xl bg-white">
             <View className="w-5/12 my-[6] rounded-3xl bg-white shadow-lg flex items-center justify-center m-[17] border">
             <Text>test</Text>
